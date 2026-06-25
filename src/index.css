@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap');
+
+@theme {
+  --color-primary: #0d9488;
+  --color-primary-light: #14b8a6;
+  --color-primary-dark: #0f766e;
+  
+  --color-accent: #d97706;
+  --color-accent-light: #f59e0b;
+  
+  --color-warm-bg: #fdfbf7;
+  --color-warm-card: #ffffff;
+  --color-warm-text: #2d3748;
+  --color-warm-border: #f0e9df;
+
+  --color-dark-bg: #0b0f19;
+  --color-dark-card: #151d30;
+  --color-dark-text: #e2e8f0;
+  --color-dark-border: #1e293b;
+
+  --font-sans: 'Traditional Arabic', 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-quran: 'Scheherazade New', serif;
+  --font-arabic: 'Traditional Arabic', 'Cairo', sans-serif;
+}
+
+/* Force Traditional Arabic font globally on all UI elements except Quranic text */
+*:not(.font-quran) {
+  font-family: 'Traditional Arabic', 'Cairo', var(--font-sans), sans-serif;
+}
+
+/* Explicit override to enforce the elegant Quranic font */
+.font-quran, .font-quran * {
+  font-family: 'Scheherazade New', 'Amiri', 'Traditional Arabic', serif !important;
+}
+
+/* Custom global styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Traditional Arabic', 'Cairo', var(--font-sans), sans-serif;
+  direction: rtl;
+  text-align: right;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+body.light-mode {
+  background-color: var(--color-warm-bg);
+  color: var(--color-warm-text);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Islamic Geometric Background Pattern Overlay */
+.islamic-pattern {
+  background-color: transparent;
+  background-image: radial-gradient(rgba(13, 148, 136, 0.03) 1px, transparent 0),
+                    radial-gradient(rgba(13, 148, 136, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+body.dark-mode .islamic-pattern {
+  background-image: radial-gradient(rgba(20, 184, 166, 0.02) 1px, transparent 0),
+                    radial-gradient(rgba(20, 184, 166, 0.02) 1px, transparent 0);
+}
+
+/* Glassmorphism styling helpers */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .glass-effect {
+  background: rgba(21, 29, 48, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Soft transition on hover elements */
+.interactive-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.interactive-hover:hover {
+  transform: translateY(-2px);
+}
+.interactive-hover:active {
+  transform: translateY(0);
+}
